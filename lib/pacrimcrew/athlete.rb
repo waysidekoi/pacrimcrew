@@ -38,6 +38,7 @@ class Pacrimcrew::Athlete
   end
 
   def options
+    # Trick strava into thinking this is a browser request
     {
       headers: {
         "User-Agent" => "Mozilla/5.0"
@@ -59,6 +60,9 @@ class Pacrimcrew::Athlete
   end
 
   def cycling_stats_present?(page)
+    # Since we're scraping the HTML, the athlete needs to set his/her
+    # default sport to Running. Otherwise it may display stats for a
+    # different activity
     !!page.search(".athlete-records").search('thead').text[/Cycling/]
   end
 
