@@ -21,11 +21,11 @@ class Pacrimcrew
   end
 
   def members
-    # Array of athlete IDs
     @members ||= client.list_club_members(STRAVA_CLUB_ID)
   end
 
   def member_ids
+    # Array of athlete IDs
     members.map { |member| member.fetch('id') }
   end
 
