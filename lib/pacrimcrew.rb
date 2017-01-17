@@ -6,6 +6,7 @@ require 'strava/api/v3'
 class Pacrimcrew
   STRAVA_ACCESS_TOKEN = ENV['STRAVA_ACCESS_TOKEN']
   STRAVA_CLUB_ID = ENV['STRAVA_CLUB_ID']
+  WAYNE=369236
 
   def self.root_path
     Pathname.new(File.dirname(File.dirname(__FILE__)))
@@ -29,7 +30,7 @@ class Pacrimcrew
   end
 
   def stats
-    @stats ||= member_ids.map do |athlete_id|
+    @stats ||= member_ids.reject{|id| id == WAYNE}.map do |athlete_id|
       athlete = Pacrimcrew::Athlete.new(athlete_id)
       {
         name: athlete.name,
