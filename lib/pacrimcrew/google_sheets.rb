@@ -31,6 +31,16 @@ class Pacrimcrew::GoogleSheets
       row += 1
     end
 
+    sheet[row,3] = "TOTAL"
+    sheet[row,4] = "=SUM(D3,#{stats.count})"
+    sheet[row,5] = "=SUM(D3,#{stats.count})"
+    sheet[row,6] = "=SUM(D3,#{stats.count})"
+    sheet[row,7] = "=SUM(D3,#{stats.count})"
+    sheet[row,8] = "=SUM(D3,#{stats.count})"
+    sheet[row,9] = "=SUM(D3,#{stats.count})"
+    sheet[row,10] = "=SUM(D3,#{stats.count})"
+    sheet[row,11] = "=SUM(D3,#{stats.count})"
+
     sheet.save
   end
 
