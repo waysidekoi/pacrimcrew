@@ -32,14 +32,14 @@ class Pacrimcrew::GoogleSheets
     end
 
     sheet[row,3] = "TOTAL"
-    sheet[row,4] = "=SUM(D3,#{stats.count})"
-    sheet[row,5] = "=SUM(D3,#{stats.count})"
-    sheet[row,6] = "=SUM(D3,#{stats.count})"
-    sheet[row,7] = "=SUM(D3,#{stats.count})"
-    sheet[row,8] = "=SUM(D3,#{stats.count})"
-    sheet[row,9] = "=SUM(D3,#{stats.count})"
-    sheet[row,10] = "=SUM(D3,#{stats.count})"
-    sheet[row,11] = "=SUM(D3,#{stats.count})"
+    sheet[row,4] = "=SUM(D3:D#{stats.count})"
+    sheet[row,5] = "=SUM(E3:E#{stats.count})"
+    sheet[row,6] = "=SUM(F3:F#{stats.count})"
+    sheet[row,7] = "=SUM(G3:G#{stats.count})"
+    sheet[row,8] = "=SUM(H3:H#{stats.count})"
+    sheet[row,9] = "=SUM(I3:I#{stats.count})"
+    sheet[row,10] = "=SUM(J3:J#{stats.count})"
+    sheet[row,11] = "=SUM(K3:K#{stats.count})"
 
     sheet.save
   end
