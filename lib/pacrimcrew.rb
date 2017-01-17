@@ -30,6 +30,10 @@ class Pacrimcrew
   end
 
   def stats
+    # Only profiles set to public are visible to non-club members.
+    # Adding yourself to the club permits viewing these profiles. Explicitly
+    # remove yourself if you don't want your stats to be tracked in the
+    # output
     @stats ||= member_ids.reject{|id| id == WAYNE}.map do |athlete_id|
       athlete = Pacrimcrew::Athlete.new(athlete_id)
       {
