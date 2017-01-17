@@ -3,7 +3,7 @@ require "google_drive"
 class Pacrimcrew::GoogleSheets
   GOOGLE_SHEETS_CLIENT_ID = ENV['GOOGLE_SHEETS_CLIENT_ID']
   GOOGLE_SHEETS_CLIENT_SECRET = ENV['GOOGLE_SHEETS_CLIENT_SECRET']
-  SPREADSHEET_ID = ENV['SPREADSHEET_ID']
+  GOOGLE_SPREADSHEET_ID = ENV['GOOGLE_SPREADSHEET_ID']
 
   attr_reader :stats
 
@@ -13,7 +13,7 @@ class Pacrimcrew::GoogleSheets
 
   def create!
     # First worksheet
-    sheet = session.spreadsheet_by_key(SPREADSHEET_ID).worksheets[0]
+    sheet = session.spreadsheet_by_key(GOOGLE_SPREADSHEET_ID).worksheets[0]
 
     row = 3
     stats.each do |athlete|
@@ -31,6 +31,7 @@ class Pacrimcrew::GoogleSheets
       row += 1
     end
 
+    # Add a blank line between data and TOTAL
     sheet[row+1,3] = "TOTAL"
     sheet[row+1,4] = "=SUM(D3:D#{stats.count})"
     sheet[row+1,5] = "=SUM(E3:E#{stats.count})"
