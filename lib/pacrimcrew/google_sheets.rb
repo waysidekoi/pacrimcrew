@@ -32,7 +32,6 @@ class Pacrimcrew::GoogleSheets
       row += 1
     end
 
-    # Add a blank line between data and TOTAL
     sheet[row,1] = "TOTAL"
     sheet[row,4] = "=SUM(D3:D#{stats.count + start_row})"
     sheet[row,5] = "=SUM(E3:E#{stats.count + start_row})"
