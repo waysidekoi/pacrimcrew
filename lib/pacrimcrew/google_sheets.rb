@@ -14,6 +14,7 @@ class Pacrimcrew::GoogleSheets
   def create!
     # First worksheet
     sheet = session.spreadsheet_by_key(GOOGLE_SPREADSHEET_ID).worksheets[0]
+    start_row = 3
 
     row = 3
     stats.each do |athlete|
@@ -33,14 +34,14 @@ class Pacrimcrew::GoogleSheets
 
     # Add a blank line between data and TOTAL
     sheet[row+1,3] = "TOTAL"
-    sheet[row+1,4] = "=SUM(D3:D#{stats.count})"
-    sheet[row+1,5] = "=SUM(E3:E#{stats.count})"
-    sheet[row+1,6] = "=SUM(F3:F#{stats.count})"
-    sheet[row+1,7] = "=SUM(G3:G#{stats.count})"
-    sheet[row+1,8] = "=SUM(H3:H#{stats.count})"
-    sheet[row+1,9] = "=SUM(I3:I#{stats.count})"
-    sheet[row+1,10] = "=SUM(J3:J#{stats.count})"
-    sheet[row+1,11] = "=SUM(K3:K#{stats.count})"
+    sheet[row+1,4] = "=SUM(D3:D#{stats.count + start_row})"
+    sheet[row+1,5] = "=SUM(E3:E#{stats.count + start_row})"
+    sheet[row+1,6] = "=SUM(F3:F#{stats.count + start_row})"
+    sheet[row+1,7] = "=SUM(G3:G#{stats.count + start_row})"
+    sheet[row+1,8] = "=SUM(H3:H#{stats.count + start_row})"
+    sheet[row+1,9] = "=SUM(I3:I#{stats.count + start_row})"
+    sheet[row+1,10] = "=SUM(J3:J#{stats.count + start_row})"
+    sheet[row+1,11] = "=SUM(K3:K#{stats.count + start_row})"
 
     sheet.save
   end
